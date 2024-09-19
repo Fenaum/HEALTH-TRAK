@@ -1,0 +1,114 @@
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  margin: 0;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+li {
+  color: hsl(var(--primary));
+  margin-right: 1rem;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.active {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px; /* Adjust the thickness of the underline */
+  text-decoration-skip-ink: none; /* Ensures the underline does not go through the text */
+}
+
+.nav-break {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(153, 153, 255, 0.255),
+    rgba(255, 153, 238, 0.226),
+    rgba(153, 153, 255, 0.255)
+  );
+  margin-top: 0;
+}
+
+.NavMenu-items {
+  will-change: transform, opacity;
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: visibility 0s 0.5s, opacity 0.5s cubic-bezier(0, 0, 0.2, 1),
+    transform 0.5s cubic-bezier(0, 0, 0.2, 1);
+  justify-content: start;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  overflow: hidden; /* Hides the overflow of content inside the menu */
+  background-color: white;
+  font-weight: 200;
+  list-style: none;
+  z-index: 999;
+  top: 0;
+  left: 0;
+}
+
+.NavMenu-items.show {
+  will-change: transform, opacity;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition: visibility 0s, opacity 0.5s cubic-bezier(0, 0, 0.2, 1),
+    transform 0.5s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.menu-break {
+  background: transparent;
+  margin-bottom: 5rem;
+}
+
+.NavMenu-items > li {
+  width: 100%;
+  text-align: center;
+  color: hsla(var(--primary));
+  font-weight: 200;
+  font-size: 1.9rem;
+  list-style: none;
+  margin: 1rem;
+}
+
+.menu-line-break {
+  width: 100%;
+  margin: 0.5rem;
+}
+
+.NavMenu-button {
+  background-color: transparent;
+  border: none;
+  transition: transform 0.3s ease-in-out;
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.NavMenu-button.rotate {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease-in-out;
+}
