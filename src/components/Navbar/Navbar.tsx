@@ -9,7 +9,7 @@ const Navbar = () => {
     <>
       <SideBar className="hidden lg:flex" />
       <nav className="hidden lg:flex">
-        <img alt="Logo" className="h-40 w-40 mx-5" />{" "}
+        <h1 className="title m-14">HEALTH-TRAK</h1>
         {/* Make sure you have a logo icon */}
         <ul>
           <li>
