@@ -1,4 +1,5 @@
 import { m, animationProps } from "../../utils/animation";
+import MealLogForm from "../../components/UI/MealLogForm/MealLogForm";
 
 export default function Diary() {
   return (
@@ -18,6 +19,7 @@ export default function Diary() {
       <div>
         <section>
           <h2>Breakfast</h2>
+          <MealLogForm />
         </section>
         <section>
           <h2>Lunch</h2>
