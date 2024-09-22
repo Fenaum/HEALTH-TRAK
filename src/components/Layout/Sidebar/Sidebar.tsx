@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import Icons from "../../../constants";
+import Icons from "../../../../constants";
 import "./Sidebar.css";
-import useSidebarToggle from "../../hooks/useSidebarToggle";
+import useSidebarToggle from "../../../hooks/useSidebarToggle";
 
 interface Props {
   className?: string;

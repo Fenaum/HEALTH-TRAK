@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "react-router-dom";
-import Icons from "../../../constants";
+import Icons from "../../../../constants";
 import "./Navbar.css";
 import { useState } from "react";
 
