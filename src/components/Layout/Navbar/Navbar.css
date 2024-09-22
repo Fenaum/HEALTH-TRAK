@@ -12,6 +12,7 @@ nav {
 }
 
 ul {
+  color: navy;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -20,8 +21,7 @@ ul {
   justify-content: space-between;
 }
 
-li {
-  color: hsl(var(--primary));
+ul > a {
   margin-right: 1rem;
   text-decoration: none;
   font-size: 1.1rem;
@@ -114,5 +114,5 @@ li {
 }
 
 .title {
-  color: black;
+  color: navy;
 }

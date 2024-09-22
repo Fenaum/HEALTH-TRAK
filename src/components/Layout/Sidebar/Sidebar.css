@@ -8,9 +8,8 @@
   left: 0; /* Align to the left */
   height: 100vh; /* Full viewport height */
   overflow-y: auto; /* Enable scrolling if content overflows */
-  box-shadow: 2px 0 2px -3px black;
   z-index: 999; /* Ensure the sidebar stays on top of other content */
-  background: hsl(var(--primary));
+  background: white;
   transform: translateX(-100%); /* Initially hidden off-screen to the left */
   transition: visibility 0s, opacity 0.5s cubic-bezier(0, 0, 0.2, 1),
     transform 0.5s cubic-bezier(0, 0, 0.2, 1);
@@ -43,8 +42,8 @@
 .side-bar a:hover {
   background: linear-gradient(
     to right,
-    rgba(255, 153, 238, 0.226),
-    rgba(153, 153, 255, 0.255)
+    rgba(43, 1, 140, 0.226),
+    rgba(1, 1, 132, 0.255)
   );
 }
 
