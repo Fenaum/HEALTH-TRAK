@@ -1,5 +1,6 @@
 import { m, animationProps } from "../../utils/animation";
 import MealLogForm from "../../components/UI/MealLogForm/MealLogForm";
+import "./Diary.css"
 
 export default function Diary() {
   return (
@@ -18,6 +19,19 @@ export default function Diary() {
       </div>
       <div>
         <section>
+          <h2>Remaining Calories</h2>
+          <h3></h3>
+        </section>
+        <section>
+          <h2>Today's Progress</h2>
+          <h3></h3>
+        </section>
+        <section>
+          <h2>Today's Notes</h2>
+        </section>
+      </div>
+      <div className="foodLog">
+        <section className="">
           <h2>Breakfast</h2>
           <MealLogForm />
         </section>
@@ -32,14 +46,6 @@ export default function Diary() {
         </section>
         <section>
           <h2>Water</h2>
-        </section>
-      </div>
-      <div>
-        <section>
-          <h2>Today's Progress</h2>
-        </section>
-        <section>
-          <h2>Today's Notes</h2>
         </section>
       </div>
     </m.main>
