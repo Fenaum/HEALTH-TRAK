@@ -1,8 +1,40 @@
 import { m, animationProps } from "../../utils/animation";
 import MealLogForm from "../../components/UI/MealLogForm/MealLogForm";
+import FoodLogs from "../../components/UI/FoodLogs/foodLogs"
+import { useState, useEffect } from 'react'
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "./firebaseConfig"; // Import your Firebase config
 import "./Diary.css"
 
+const getFoodLogs = async () => {
+  try {
+    const foodLogsCollectionRef = collection(db, "foodLogs");
+    const querySnapshot = await getDocs(foodLogsCollectionRef);
+
+    const foodLogs = [];
+    querySnapshot.forEach((doc) => {
+      foodLogs.push({
+        id: doc.id, // Include the document ID
+        ...doc.data(), // Spread the document data
+      });
+    });
+
+    return foodLogs;
+  } catch (error) {
+    console.error("Error getting food logs: ", error);
+    // Handle the error appropriately (e.g., show an error message)
+  }
+};
+
+// Example usage:
+getFoodLogs().then((logs) => {
+  console.log("Food logs:", logs);
+  // Now you have the foodLogs array to use in your component
+});
+
 export default function Diary() {
+  const [foodLogs, setFoodLogs] = useState('')
+
   return (
     <m.main
       className="flex flex-col items-center justify-center"
@@ -33,7 +65,8 @@ export default function Diary() {
       <div className="foodLog">
         <section className="">
           <h2>Breakfast</h2>
-          <MealLogForm />
+          <FoodLogs />
+          {/* <MealLogForm /> */}
         </section>
         <section>
           <h2>Lunch</h2>
