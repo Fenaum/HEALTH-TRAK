@@ -22,3 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+_data/health-trak-firebase-adminsdk-v3tep-4aa63367f2.json

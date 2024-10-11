@@ -1,39 +1,18 @@
 import { m, animationProps } from "../../utils/animation";
 import MealLogForm from "../../components/UI/MealLogForm/MealLogForm";
-import FoodLogs from "../../components/UI/FoodLogs/foodLogs"
+import FoodLogs from "../../components/UI/FoodLogs/FoodLogs"
+import { getFoodLogs } from "../../utils/CRUD";
 import { useState, useEffect } from 'react'
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "./firebaseConfig"; // Import your Firebase config
 import "./Diary.css"
 
-const getFoodLogs = async () => {
-  try {
-    const foodLogsCollectionRef = collection(db, "foodLogs");
-    const querySnapshot = await getDocs(foodLogsCollectionRef);
-
-    const foodLogs = [];
-    querySnapshot.forEach((doc) => {
-      foodLogs.push({
-        id: doc.id, // Include the document ID
-        ...doc.data(), // Spread the document data
-      });
-    });
-
-    return foodLogs;
-  } catch (error) {
-    console.error("Error getting food logs: ", error);
-    // Handle the error appropriately (e.g., show an error message)
-  }
-};
-
-// Example usage:
-getFoodLogs().then((logs) => {
-  console.log("Food logs:", logs);
-  // Now you have the foodLogs array to use in your component
-});
 
 export default function Diary() {
-  const [foodLogs, setFoodLogs] = useState('')
+  const [foodLogs, setFoodLogs] = useState([])
+
+  useEffect(() => {
+    const logs = getFoodLogs().then((data) => data).catch((err) => {throw err})
+    return logs;
+  } , [])
 
   return (
     <m.main
@@ -66,7 +45,10 @@ export default function Diary() {
         <section className="">
           <h2>Breakfast</h2>
           <FoodLogs />
-          {/* <MealLogForm /> */}
+          <div className="hidden">
+            <MealLogForm />
+
+          </div>
         </section>
         <section>
           <h2>Lunch</h2>
