@@ -9,10 +9,34 @@ import "./Diary.css"
 export default function Diary() {
   const [foodLogs, setFoodLogs] = useState([])
 
-  useEffect(() => {
-    const logs = getFoodLogs().then((data) => data).catch((err) => {throw err})
-    return logs;
-  } , [])
+  // useEffect(() => {
+  //   const logs = getFoodLogs().then((data) => data).catch((err) => {throw err})
+  //   return logs;
+  // } , [])
+  
+   useEffect(() => {
+     let isMounted = true;
+
+     const fetchFoodLogs = async () => {
+       try {
+         const logs = await getFoodLogs();
+         if (isMounted) {
+           setFoodLogs(logs);
+         }
+       } catch (error) {
+         if (isMounted) {
+           console.error("Failed to fetch food logs:", error);
+           // Handle the error appropriately (e.g., show an error message to the user)
+         }
+       }
+     };
+
+     fetchFoodLogs();
+
+     return () => {
+       isMounted = false;
+     };
+   }, []);
 
   return (
     <m.main
